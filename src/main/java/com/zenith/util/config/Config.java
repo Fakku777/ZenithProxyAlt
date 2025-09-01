@@ -121,154 +121,34 @@ public final class Config {
         }
 
         public static final class Extra {
-            public final AntiAFK antiafk = new AntiAFK();
             public final Spook spook = new Spook();
             public final Utility utility = new Utility();
             public final AutoReconnect autoReconnect = new AutoReconnect();
             public final AutoRespawn autoRespawn = new AutoRespawn();
-            public final Spammer spammer = new Spammer();
-            public final AutoReply autoReply = new AutoReply();
             public final Stalk stalk = new Stalk();
             public final AutoEat autoEat = new AutoEat();
-            public final AutoFish autoFish = new AutoFish();
-            public final KillAura killAura = new KillAura();
-            public final AutoTotem autoTotem = new AutoTotem();
             public final AntiLeak antiLeak = new AntiLeak();
             public final Chat chat = new Chat();
             public final AntiKick antiKick = new AntiKick();
             public final ReplayMod replayMod = new ReplayMod();
             public final ArrayList<PlayerEntry> friendsList = new ArrayList<>();
             public boolean autoConnectOnLogin = true;
-            public boolean prioStatusChangeMention = true;
+            public boolean prioStatusChangeMention = false;
             public boolean killMessage = true;
             public boolean logChatMessages = true;
-            public boolean logOnlyQueuePositionUpdates = true;
+            public boolean logOnlyQueuePositionUpdates = false;
             public final CoordObfuscation coordObfuscation = new CoordObfuscation();
             public final ActionLimiter actionLimiter = new ActionLimiter();
             public final VisualRange visualRange = new VisualRange();
-            public final AutoArmor autoArmor = new AutoArmor();
-            public final AutoMend autoMend = new AutoMend();
             public final QueueWarning queueWarning = new QueueWarning();
             public final Click click = new Click();
             public final SessionTimeLimit sessionTimeLimit = new SessionTimeLimit();
-            public final AutoOmen autoOmen = new AutoOmen();
-            public final Pathfinder pathfinder = new Pathfinder();
-            public final SpawnPatrol spawnPatrol = new SpawnPatrol();
-            public final PearlLoader pearlLoader = new PearlLoader();
             public final Waypoints waypoints = new Waypoints();
             public String whisperCommand = "msg";
 
             public static final class Waypoints {
                 public ArrayList<Waypoint> waypoints = new ArrayList<>();
-            }
-
-            public static final class PearlLoader {
-                public ArrayList<Pearl> pearls = new ArrayList<>();
-                public boolean returnToStartPos = true;
-
-                /**
-                 * @param id player name or some other unique identifier
-                 * @param x  the position of the block we need to interact with to load the pearl
-                 */
-                public record Pearl(String id, int x, int y, int z) { }
-            }
-
-            public static final class Pathfinder {
-                public boolean allowBreak = true;
-                public boolean allowSprint = false;
-                public boolean allowPlace = true;
-                public boolean allowInventory = true;
-                public boolean allowDownward = true;
-                public boolean allowParkour = false;
-                public boolean allowParkourPlace = false;
-                public boolean allowParkourAscend = false;
-                public boolean allowDiagonalDescend = false;
-                public boolean allowDiagonalAscend = false;
-                public boolean diagonalCentering = false;
-                public boolean traverseCentering = false;
-                public double blockBreakAdditionalCost = 2;
-                public int maxFallHeightNoWater = 3;
-                public boolean allowLongFall = false;
-                public double longFallCostLogMultiplier = 50;
-                public double longFallCostAddCost = 100;
-                public int followRadius = 2;
-                public int teleportDelayMs = 500;
-                public boolean renderPath = true;
-                public int pathRenderIntervalTicks = 10;
-                public boolean renderPathDetailed = false;
-                public int primaryTimeoutMs = 500;
-                public int failureTimeoutMs = 2000;
-                public int planAheadPrimaryTimeoutMs = 4000;
-                public int planAheadFailureTimeoutMs = 5000;
-                public int failedPathSearchCooldownMs = 1000;
-                public boolean getToBlockExploreForBlocks = true;
-                public boolean getToBlockBlacklistClosestOnFailure = false;
-                public boolean simplifyUnloadedYGoal = false;
-            }
-
-            public static class SessionTimeLimit {
-                public boolean enabled = true;
-                public IntArraySet ingameNotificationPositions = IntArraySet.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-                public IntArraySet discordNotificationPositions = new IntArraySet();
-                public IntArraySet discordMentionPositions = new IntArraySet();
-                public boolean dynamic2b2tSessionTimeLimit = true;
-            }
-
-            public static class Click {
-                public boolean enabled = true;
-                public boolean holdLeftClick = false;
-                public boolean holdRightClick = false;
-                public boolean hasRotation = false;
-                public boolean holdSneak = false;
-                public float rotationYaw = 0;
-                public float rotationPitch = 0;
-                public HoldRightClickMode holdRightClickMode = HoldRightClickMode.MAIN_HAND;
-                public HoldClickTarget holdClickTarget = HoldClickTarget.ANY;
-                public int holdRightClickInterval = 5;
-                public int holdLeftClickInterval = 0;
-                public float additionalBlockReach = 0;
-                public float additionalEntityReach = 0;
-                public enum HoldRightClickMode {
-                    MAIN_HAND,
-                    OFF_HAND,
-                    ALTERNATE_HANDS
-                }
-                public enum HoldClickTarget {
-                    ANY,
-                    NONE,
-                    ENTITY,
-                    BLOCK
-                }
-            }
-
-            public static class SpawnPatrol {
-                public boolean enabled = false;
-                public boolean ignoreFriends = true;
-                public boolean targetOnlyNakeds = true;
-                public boolean targetAttackers = true;
-                public boolean stickyTargeting = true;
-                public boolean nether = true;
-                public boolean stuckKill = true;
-                public int stuckKillSeconds = 60;
-                public int stuckKillMinDist = 10;
-                public boolean stuckKillAntiStuck = true;
-                public int goalX = 0;
-                public int goalY = 120;
-                public int goalZ = 0;
-                public int maxPatrolRange = 500;
-                public final ArrayList<PlayerEntry> ignoreList = new ArrayList<>();
-            }
-
-            public static final class QueueWarning {
-                public boolean enabled = true;
-                public IntArraySet warningPositions = IntArraySet.of(1, 2, 3, 10);
-                public IntArraySet mentionPositions = new IntArraySet();
-            }
-
-            public static class AutoMend {
-                public boolean enabled = false;
-            }
-
+             }
             public static class VisualRange {
                 public boolean enabled = true;
                 public boolean ignoreFriends = false;
@@ -289,15 +169,7 @@ public final class Config {
                 }
             }
 
-            public static class AutoArmor {
-                public boolean enabled = false;
-            }
-
-            public static class AntiKick {
-                public boolean enabled = false;
-                public int playerInactivityKickMins = 15;
-                public int minWalkDistance = 2;
-            }
+        
 
             public static final class Chat {
                 public boolean enabled = true;
@@ -310,15 +182,7 @@ public final class Config {
                 public boolean hide2b2tActionBarText = false;
             }
 
-            public static final class AutoTotem {
-                public boolean enabled = true;
-                public boolean inGame = false;
-                public int healthThreshold = 20;
-                public boolean noTotemsAlert = false;
-                public boolean noTotemsAlertMention = false;
-                public boolean totemPopAlert = false;
-                public boolean totemPopAlertMention = false;
-            }
+        
 
             public static final class AntiLeak {
                 public boolean enabled = true;
@@ -328,25 +192,7 @@ public final class Config {
                 public double rangeFactor = 10.0;
             }
 
-            public static final class KillAura {
-                public boolean enabled = false;
-                public boolean targetPlayers = false;
-                public boolean targetHostileMobs = true;
-                public boolean targetNeutralMobs = false;
-                public boolean targetCustom = false;
-                public boolean onlyNeutralAggressive = false;
-                public boolean onlyHostileAggressive = false;
-                public boolean switchWeapon = true;
-                public boolean targetArmorStands = false;
-                public int attackDelayTicks = 10;
-                public boolean raycast = false;
-                public final ArrayList<EntityType> customTargets = new ArrayList<>();
-                public Priority priority = Priority.NONE;
-
-                public enum Priority {
-                    NONE,
-                    NEAREST
-                }
+        
             }
 
             public static final class AutoEat {
@@ -358,48 +204,14 @@ public final class Config {
                 public boolean allowUnsafeFood = false;
             }
 
-            public static final class AutoOmen {
-                public boolean enabled = false;
-                public boolean whileRaidActive = false;
-                public boolean whileOmenActive = false;
-                public int raidCooldownMs = 1000;
-                public int omenCooldownMs = 1000;
-            }
+          
 
             public static final class Stalk {
                 public boolean enabled = false;
                 public final ArrayList<PlayerEntry> stalking = new ArrayList<>();
             }
 
-            public static final class AutoFish {
-                public boolean enabled = false;
-                public float yaw = 0.0f;
-                public float pitch = 0.0f;
-            }
-
-            public static final class AntiAFK {
-                public Actions actions = new Actions();
-                public boolean enabled = true;
-
-                public static final class Actions {
-                    public boolean walk = true;
-                    // we only need about 5-6 blocks in reality but adding a few extra here to be safe
-                    // this isn't dependent on chunks loading but is more based on distance
-                    public int walkDistance = 8;
-                    // avoid going off ledges even when falls are non-fatal
-                    public boolean safeWalk = true;
-                    public long walkDelayTicks = 400;
-                    public boolean swingHand = true;
-                    public long swingDelayTicks = 3000;
-                    public boolean rotate = true;
-                    public long rotateDelayTicks = 300L;
-                    public boolean jump = false;
-                    public boolean jumpOnlyInWater = true;
-                    public long jumpDelayTicks = 1L;
-                    public boolean sneak = false;
-                    public long sneakDelayTicks = 200L;
-                }
-            }
+        
 
             public static final class Spook {
                 public boolean enabled = false;
@@ -480,26 +292,7 @@ public final class Config {
                 public int delayMillis = 100;
             }
 
-            public static final class Spammer {
-                public boolean enabled = false;
-                public boolean whilePlayerConnected = false;
-                public boolean whisper = false;
-                public long delayTicks = 200;
-                public boolean randomOrder = false;
-                public boolean appendRandom = false;
-                public final ArrayList<String> messages = Lists.newArrayList(
-                    "ZenithProxy on top!",
-                    "I just skipped queue thanks to ZenithProxy!",
-                    "Download ZenithProxy on GitHub today! It's free!"
-                );
-            }
-
-            public static final class AutoReply {
-                public boolean enabled = false;
-                public int cooldownSeconds = 15;
-                public String message = "I am currently AFK, check back later or message me on discord.";
-            }
-
+        
             public static final class CoordObfuscation {
                 // all offsets in chunk coords
                 public boolean enabled = false;
@@ -559,7 +352,7 @@ public final class Config {
         }
 
         public static final class Server {
-            public String address = "connect.2b2t.org";
+            public String address = "play.insanitycraft.net";
             public int port = 25565;
         }
 
